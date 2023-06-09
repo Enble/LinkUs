@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link th:href="@{/css/bootstrap.min.css}"
+          href="../css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container" style="max-width: 600px">
+    <div class="py-5 text-center">
+        <h2 th:text="#{page.rooms}">회의실 목록</h2>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <button class="btn btn-primary float-end"
+                    onclick="location.href='addRoomForm.html'"
+                    th:onclick="|location.href='@{/rooms/add}'|"
+                    type="button" th:text="#{page.addRoom}">회의실 만들기</button>
+        </div>
+    </div>
+
+    <hr class="my-4">
+    <div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th th:text="#{label.room.roomName}">회의실 이름</th>
+                <th th:text="#{label.room.memberNum}">인원수</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="room : ${rooms}">
+                <td th:text="${room.roomName}">회의실 이름</a></td>
+                <td th:text="${room.memberNum}">인원수</td>
+                <td>
+                    <a href="#" th:href="@{/rooms/{id}(id=${room.id})}" class="btn btn-primary" role="button"
+                    th:text="#{button.enterRoom}">회의실 입장</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div> <!-- /container -->
+
+</body>
+</html>

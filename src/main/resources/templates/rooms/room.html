@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link th:href="@{/css/bootstrap.min.css}"
+          href="../css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+            max-width: 560px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="py-5 text-center">
+        <h2 th:text="${room.roomName}">회의실 이름</h2>
+    </div>
+
+    <!-- 추가 -->
+    <h2 th:if="${param.status}" th:text="'저장 완료'"></h2>
+
+    <div>
+        <label for="roomName" th:text="#{label.room.roomName}">회의실 이름</label>
+        <input type="text" id="roomName" name="roomName" class="form-control" value="회의실 이름" th:value="${room.roomName}" readonly>
+    </div>
+    <div>
+        <label for="memberNum" th:text="#{label.room.memberNum}">인원수</label>
+        <input type="text" id="memberNum" name="memberNum" class="form-control" value="인원수" th:value="${room.memberNum}" readonly>
+    </div>
+    <br>
+    <div>
+        <div class="col">
+            <button class="w-100 btn btn-primary btn-lg"
+                    th:onclick="|location.href='@{/rooms/{id}/join (id=${room.id})}'|"
+                    type="button" th:text="#{page.joinMeeting}">회의 참가</button>
+    </div>
+
+    <hr class="my-4">
+
+    <div class="row">
+        <div class="col">
+            <button class="w-100 btn btn-primary btn-lg"
+                    th:onclick="|location.href='@{/rooms/{id}/edit (id=${room.id})}'|"
+                    type="button" th:text="#{page.updateRoom}">회의실 정보 수정</button>
+        </div>
+        <div class="col">
+            <button class="w-100 btn btn-secondary btn-lg"
+                    onclick="location.href='rooms.html'"
+                    th:onclick="|location.href='@{/rooms}'|"
+                    type="button">회의실 목록</button>
+        </div>
+    </div>
+
+</div> <!-- /container -->
+</body>
+</html>

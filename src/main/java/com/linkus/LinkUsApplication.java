@@ -1,13 +1,13 @@
-package com.webchat;
+package com.linkus;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class WebChatApplication {
+public class LinkUsApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(WebChatApplication.class, args);
+        SpringApplication.run(LinkUsApplication.class, args);
     }
 
 }
